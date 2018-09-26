@@ -37,9 +37,16 @@ export default class App extends Component {
     const { forecast } = this.props;
 
     return (
-        <div>
-          <WeatherForecast data={forecast} />
+      forecast === null ? (
+        <div className="loading">
+        <div className="spinner"></div>
         </div>
+        ) : (
+        <div>
+        <WeatherForecast data={forecast} />
+        </div>
+        )
+        
     );
   }
 }
