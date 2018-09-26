@@ -14,7 +14,23 @@ export default class App extends Component {
 
 
   componentDidMount() {  
-
+    const detectLocation = new Promise((resolve,reject) => {
+      if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition((position) => {
+      resolve(position.coords);
+      }, (error) => {
+      if(error.code === error.PERMISSION_DENIED) {
+      console.error("Error detecting location.");
+      }
+      });
+      }
+      });
+      
+      detectLocation.then((location) => {
+      this.props.dispatch(fetchData(location));
+      }).catch(() => {
+      this.props.dispatch(fetchData("Mumbai"));
+      });
   }
 
   render() {
