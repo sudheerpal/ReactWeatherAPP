@@ -26,7 +26,7 @@ export default class Dashboard extends Component {
     return (
       <div className={wrapperClass}>
         <header>
-          <h1 className="heading">5-Day Weather Forecast</h1>
+          <h1 className="heading">Weather App</h1>
         </header>
         <section className="controls">
           <div>
